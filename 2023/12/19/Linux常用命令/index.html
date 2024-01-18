@@ -1,0 +1,1081 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/2.jpg">
+  <link rel="icon" href="/img/2.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="lalaland">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="echoecho echo hello  echo -n hello      -n表示不换行 name&#x3D;xx   echo $name     打印自定义参数 echo $?     打印上一次命令的状态码，0表示成功 echo ‘$name’    打印$name echo “$name”   解析参数并打印 !!  打印上一条执行的命令，并打印执行结果 !n  执行以n开头的上一条">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux常用命令">
+<meta property="og:url" content="http://example.com/2023/12/19/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/index.html">
+<meta property="og:site_name" content="lalaland">
+<meta property="og:description" content="echoecho echo hello  echo -n hello      -n表示不换行 name&#x3D;xx   echo $name     打印自定义参数 echo $?     打印上一次命令的状态码，0表示成功 echo ‘$name’    打印$name echo “$name”   解析参数并打印 !!  打印上一条执行的命令，并打印执行结果 !n  执行以n开头的上一条">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/linux/cover.png">
+<meta property="article:published_time" content="2023-12-19T12:35:48.000Z">
+<meta property="article:modified_time" content="2023-12-19T14:04:53.775Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="IT">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/linux/cover.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>Linux常用命令 - lalaland</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+    <!-- Google tag (gtag.js) -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        Fluid.utils.createScript("https://www.googletagmanager.com/gtag/js?id=", function() {
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag('js', new Date());
+          gtag('config', '');
+        });
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+<meta name="generator" content="Hexo 7.0.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 100vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/2.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Linux常用命令"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-12-19 20:35" pubdate>
+          2023年12月19日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          4.5k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          38 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+        <div class="scroll-down-bar">
+          <i class="iconfont icon-arrowdown"></i>
+        </div>
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Linux常用命令</h1>
+            
+              <p id="updated-time" class="note note-info" style="display: none">
+                
+                  
+                    本文最后更新于 2023-12-19T22:04:53+08:00
+                  
+                  
+
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="echo"><a href="#echo" class="headerlink" title="echo"></a>echo</h2><p>echo</p>
+<p>echo hello </p>
+<p>echo -n hello      -n表示不换行</p>
+<p>name&#x3D;xx   echo $name     打印自定义参数</p>
+<p>echo $?     打印上一次命令的状态码，0表示成功</p>
+<p>echo ‘$name’    打印$name</p>
+<p>echo “$name”   解析参数并打印</p>
+<p>!!  打印上一条执行的命令，并打印执行结果</p>
+<p>!n  执行以n开头的上一条命令，并打印执行结果</p>
+<p>clear 清屏</p>
+<p>echo “hello\nworld”   打印hello\nworld</p>
+<p>echo -e “hello\nworld”   开启转义功能，hello和world间会换行</p>
+<p>echo -e “\e[2;32;44mhello world\e[0m”   \e表示开启，2、32、44表示不同的样式，m表示结束，最后\e[0m表示后续打印的内容恢复默认设置</p>
+<p><img src="/img/linux/1.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="cd"><a href="#cd" class="headerlink" title="cd"></a>cd</h2><p>pwd  当前目录</p>
+<p>ll 显示当前目录中的文件</p>
+<p>cd test&#x2F;  进入下一级目录</p>
+<p>cd ..  返回上一级目录</p>
+<p>cd &#x2F;home&#x2F;test&#x2F;testdir&#x2F;test1&#x2F;test2&#x2F;   进入指定目录</p>
+<p>cd ~  回到home目录</p>
+<p>cd -  回到上一次访问的目录</p>
+<p>cd &#x2F;   回到根目录</p>
+<p><img src="/img/linux/2.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="find"><a href="#find" class="headerlink" title="find"></a>find</h2><p>find . -name “test1.txt”   .表示查找当前目录 -name表示按名称查找</p>
+<p>find . -name “*.txt”  通配符查找所有txt文件</p>
+<p>find . -iname “*.txt”   -iname忽略大小写</p>
+<p>find . -type f   查找普通文件</p>
+<p>find . -type d  查找目录文件</p>
+<p>find . -type l   查找符号链接文件</p>
+<p>find . -mmin +1  -m表示modify，修改文件  min表示分钟单位  +1表示一分钟之外</p>
+<p>find . -mmin -1   -1表示一分钟内</p>
+<p>find . -mtime -1  time表示天单位</p>
+<p>find . -user test  查找test用户的文件</p>
+<p>find . -group root  查找root组的文件</p>
+<p><img src="/img/linux/3.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="mkdir"><a href="#mkdir" class="headerlink" title="mkdir"></a>mkdir</h2><p>mkdir test1  创建test1目录</p>
+<p>mkdir test1 test2 test3  创建多个目录</p>
+<p>mkdir -p test4&#x2F;test5  创建目录以及子目录</p>
+<p>mkdir -vp test&#x2F;subdir 创建目录以及子目录，并打印创建细节</p>
+<p>mkdir -m 700 testdir  只有当前用户对该文件有rwx权限  7表示读写执行权限之和 0表示无权限  r对应4 w对应2 x对应1</p>
+<p><img src="/img/linux/4.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="cp"><a href="#cp" class="headerlink" title="cp"></a>cp</h2><p>cp testfile.txt testfile1.txt</p>
+<p>cp -v testfile.txt testdir  将文件复制到testdir目录下，并打印复制信息</p>
+<p>cp -r testdir testdir2  复制目录文件</p>
+<p>cp -i testfile.txt testdir  复制前会询问是否覆盖同名文件</p>
+<h2 id="cat"><a href="#cat" class="headerlink" title="cat"></a>cat</h2><p>cat testfile1.txt</p>
+<p>cat -n testfile1.txt 显示内容以及行号</p>
+<p>cat -b testfile1.txt 显示内容，只显示有文本内容的行数，空行不计入行号</p>
+<p>cat -s testfile1.txt 显示内容，合并空行</p>
+<p>cat -E testfile1.txt 显示内容，每行内容末尾加$符号</p>
+<p>cat -T testfile1.txt 显示内容，制表符会转换成^I，帮助判断是空格还是制表符</p>
+<p>cat -A testfile1.txt 同时实现-E和-T的效果</p>
+<p>cat testfile1.txt testfile2.txt 同时查看多个文件的内容</p>
+<p><img src="/img/linux/5.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="rm"><a href="#rm" class="headerlink" title="rm"></a>rm</h2><p>rm testfile.txt</p>
+<p>rm -r test1 删除目录文件</p>
+<p>rm -i -r test2 删除前询问是否确认删除</p>
+<p><img src="/img/linux/6.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="wc"><a href="#wc" class="headerlink" title="wc"></a>wc</h2><p>wc test.txt  打印文本中的行数、单词数、字节数以及文件名</p>
+<p>wc -l test.txt  打印行数<br>wc -w test.txt   打印单词书</p>
+<p>wc -c test.txt   打印字节数</p>
+<p>wc -m test.txt   打印字符数</p>
+<p> <img src="/img/linux/7.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="tar"><a href="#tar" class="headerlink" title="tar"></a>tar</h2><p>tar -cf testdir.tar testdir   压缩</p>
+<p>tar -xf testdir.tar   解压</p>
+<p>tar -zcf testdir.tar.gz testdir  不同算法进行压缩</p>
+<p>tar -zxf testdir.tar.gz  不同算法进行解压</p>
+<p>tar -zxvf testdir.tar.gz   打印解压信息</p>
+<p><img src="/img/linux/8.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="tail"><a href="#tail" class="headerlink" title="tail"></a>tail</h2><p>tail test.txt  </p>
+<p>tail -n 5 test.txt   打印倒数五行</p>
+<p>tail -n +5 test.txt   从第五行打印到最后一行</p>
+<p>tail -f test.txt   动态更新打印文件中新增的内容</p>
+<p>tail -F test.txt   文件丢失了，也会持续地搜索相应文件里的内容</p>
+<p>head test.txt  从前往后打印，默认十行</p>
+<p>head -n 5 test.txt   打印前五行</p>
+<p>head -n -5  从前打印到倒数第五行</p>
+<p><img src="/img/linux/9.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="vi-vim"><a href="#vi-vim" class="headerlink" title="vi&#x2F;vim"></a>vi&#x2F;vim</h2><p>vim test1.txt   创建新文件，按i进入编辑模式，按ESC回到一般模式，按：进入底线命令行模式</p>
+<p>:set number   设置行号</p>
+<p>:set nonumber   取消行号</p>
+<p>:wq   w保存，q退出</p>
+<p>一般模式下，ctrl+F用于翻一页，ctrl+B用于回翻一页，ctrl+U回翻半页，ctrl+D，翻半页</p>
+<p>yy复制一行，P在光标上面复制，p在光标下面复制，dd删除</p>
+<p>在相应指令前加数字，代表移动n行&#x2F;复制n行</p>
+<p>gg跳到文本首部，G跳到文本尾部</p>
+<p>&#x2F;hello   向下搜索hello</p>
+<p>?hello   向上搜索hello</p>
+<p>n表示当前方向的下一个，N表示当前方向相反的下一个</p>
+<p><img src="/img/linux/10.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="grep"><a href="#grep" class="headerlink" title="grep"></a>grep</h2><p>grep 1 test.txt   查找包含指定文本的相关内容，区分大小写</p>
+<p>grep -i hello test.txt   不区分大小写</p>
+<p>grep -w hello test.txt   精确匹配</p>
+<p>grep -e hello -e today test.txt   多个查询条件</p>
+<p>grep -n hello test.txt   查找相关内容，并显示它的行号</p>
+<p>grep -v hello test.txt   反向查找，查找不包含hello的内容</p>
+<p>grep -r hello testdir&#x2F;   查找文件夹中包含指定文本的文件，以及相关文本内容</p>
+<p>grep -lr hello testdir&#x2F;    只打印相关文件名</p>
+<p>grep -E ‘hello|today’ test.txt   启用正则表达式</p>
+<p><img src="/img/linux/11.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="sed"><a href="#sed" class="headerlink" title="sed"></a>sed</h2><p>sed -e ‘1i\hello’ test.txt   -e表示表达式，1i\hello表示在第一行前插入hello，不指定行数默认表示对每一行进行操作</p>
+<p>并不会直接生效，用-i表示直接生效   sed -ie ‘1i\hello’ test.txt，命令执行后多了一个.txte文件，是原来的备份文件</p>
+<p>sed -i ‘1i\hello’ test.txt   不会生成备份文件</p>
+<p>sed -e ‘1a\hello’ test.txt   a表示在相应行后面新增，append</p>
+<p>sed -e ‘4d’ test.txt   d表示删除行，delete</p>
+<p>sed -e ‘1c\copy’ test.txt   c表示全局覆盖，copy</p>
+<p>sed -e ‘s&#x2F;1&#x2F;sss’ test.txt   s表示局部替换，将1替换为sss</p>
+<p>sed -e ‘s&#x2F;1&#x2F;sss&#x2F;g’ test.txt   g表示全局地进行局部替换，会执行多次局部替换</p>
+<p>sed -e ‘1p’ test.txt   打印第一行</p>
+<p>sed -n ‘1p’ test.txt   -n表示不打印缓冲区内容，只打印执行结果</p>
+<p>多个-e写在一起表示多个脚本同时执行</p>
+<p>sed -f test.sh test.txt   将多个脚本写入test.sh，通过-f读取文本执行多个脚本</p>
+<p><img src="/img/linux/12.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="管道符号"><a href="#管道符号" class="headerlink" title="管道符号"></a>管道符号</h2><p>将前一个命令的标准输出作为后一个命令的标准输入，只会传递标准输出，不会传递标准错误输出</p>
+<p><img src="/img/linux/13.png" srcset="/img/loading.gif" lazyload alt="mg"></p>
+<h2 id=""><a href="#" class="headerlink" title="&gt;"></a>&gt;</h2><p>cat test1.txt | grep hello &gt; test.log  将test1.txt中hello相关的内容写入test.log，test.log如果存在就会覆盖，如果不存在先新建再写入</p>
+<p>grep hello test1.txt &gt;&gt; test.log   追加写入</p>
+<p>&gt;只会重定向标准输出，不会重定向标准错误输出。&gt;是1&gt;的简写。</p>
+<p>cat test2.txt 2&gt; test.log   重定向标准错误输出</p>
+<p>cat test1.txt test2.txt &gt; test.log 2&gt;&amp; 1  重定向标准输出和标准错误输出</p>
+<p><img src="/img/linux/14.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="-1"><a href="#-1" class="headerlink" title="&lt;"></a>&lt;</h2><p>cat后面什么都不跟，表示将标准输入转换成标准输出</p>
+<p>cat &lt; test.txt  将test.txt中的文本作为标准输入，cat命令将其转换为标准输出</p>
+<p>cat &lt;&lt; EOF   多次输入，最后结束时同样输入EOF结束输入。这个EOF可以由自己定义，前后保持一致即可</p>
+<p>cat &gt; test2.txt &lt;&lt; EOF   创建test2.txt，并写入数据</p>
+<p><img src="/img/linux/15.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="printf"><a href="#printf" class="headerlink" title="printf"></a>printf</h2><p>printf “$name\n”</p>
+<p>printf “\e[5;31m$name\n\e[0m”</p>
+<p>%-3s，三个字符长度的字符串，左对齐。-表示左对齐，没有表示右对齐。3表示长度。s表示数据类型。</p>
+<p>printf “%-10s\n %10s\n” “hello” “world”   hello左对齐，world右对齐，长度没满足设置的话为空</p>
+<p><img src="/img/linux/16.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="awk"><a href="#awk" class="headerlink" title="awk"></a>awk</h2><p>每一行称为record，每一个字符串称为field</p>
+<p>awk ‘{print $1}’ test.txt   打印文件的第一列</p>
+<p>awk ‘{print $NF}’ test.txt   打印文件的最后一列</p>
+<p>字段分隔符FS、记录分隔符RS</p>
+<p>输出字段分隔符OFS、输出记录分割符ORS</p>
+<p>awk ‘{OFS&#x3D;”#”; $1&#x3D;$1; print $0}’ test.txt   将字段分隔符改为#，$1&#x3D;$1表示刷新，print $0 表示打印整行数据</p>
+<p>awk -v OFS&#x3D;”#” ‘{$1&#x3D;$1; print $0}’ test.txt   </p>
+<p>awk ‘{printf “%-3s %2d %2d %2d\n”, $1,$2,$3,$4}’ test.txt   格式化打印</p>
+<p>awk ‘{if(NR&#x3D;&#x3D;3){print $0} else{print “不是第三行”}}’ test.txt    if-else语句</p>
+<p>awk ‘NR&#x3D;&#x3D;3{print $0}’ test.txt   模式+操作，模式用于匹配，操作用于执行相关逻辑</p>
+<p>awk ‘NR&#x3D;&#x3D;1,NR&#x3D;&#x3D;3{print $0}’ test.txt  打印1~3行</p>
+<p>awk ‘NR&#x3D;&#x3D;1||NR&#x3D;&#x3D;3{print $0}’ test.txt   打印第一行和第三行</p>
+<p>awk ‘&#x2F;1&#x2F;{print $0}’ test.txt   模式用正则表达式书写，打印以1开头的记录</p>
+<p>awk ‘&#x2F;1&#x2F; {print index($1, “1”)}’ test.txt   index函数，打印以1开头的记录的第一个字段中1字符的索引位置</p>
+<p>awk ‘&#x2F;1&#x2F; {print length($1)}’ test.txt   length函数，打印以1开头的记录的第一个字段的长度</p>
+<p>awk ‘&#x2F;1&#x2F;‘ test.txt   只保留模式匹配，默认打印整行</p>
+<p>awk ‘{print $1}’ test.txt   只保留操作</p>
+<p>awk ‘BEGIN{OFS&#x3D;”#”} {$1&#x3D;$1;print $0}’ test.txt   BEGIN语句</p>
+<p>awk ‘BEGIN{printf “%3s %3s %3s”, “语文”,”数学”,”英语”} {printf “%3d %3d %3d”, $1, $2,  $3}’ test.txt</p>
+<p>awk ‘BEGIN{printf “%3s %3s %3s”, “语文”,”数学”,”英语”} {printf “%3d %3d %3d”, $1, $2,  $3}’ test.txt</p>
+<p>awk ‘BEGIN{printf “%3s %3s %3s”, “语文”,”数学”,”英语”} {printf “%3d %3d %3d”, $1, $2,  $3} END{printf “%3s%d%s”, “一共有”,NR,”行”}’ test.txt   END语句</p>
+<p>awk ‘BEGIN{print “姓名”} NR&#x3D;&#x3D;2 {print $1} END{print “test”}’ test.txt</p>
+<p>awk -f awk.sh test.txt   支持通过文件输入命令</p>
+<p><img src="/img/linux/17.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="touch"><a href="#touch" class="headerlink" title="touch"></a>touch</h2><p>touch test.txt   创建空文件</p>
+<p>touch test1.txt test2.txt   批量创建空文件</p>
+<p>touch -c test3.txt   -c不会创建空文件</p>
+<p>stat test.txt   查看文件属性</p>
+<p>touch test.txt   将文件的access time和modify time改为当前时间；由于access time和modify time也属于change范围内的一种，所以change time也会改为当前时间</p>
+<p>touch -d 20210102 test.txt   将access和modify time改为20210102，change time改为修改的当前时间</p>
+<p>touch -t 202102021918.33 test.txt   -t对时间有格式要求</p>
+<p>touch -r test1.txt test.txt   根据test1.txt的时间设置test.txt的时间</p>
+<p>touch -a test.txt   修改access time</p>
+<p>touch -m test.txt   修改modify time</p>
+<p><img src="/img/linux/18.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="xargs"><a href="#xargs" class="headerlink" title="xargs"></a>xargs</h2><p>一般与管道符号连用，将标准输入转换为参数</p>
+<p>echo “hello world” | xargs echo</p>
+<p>echo “hello world” | xargs -n 1   一次传递一个参数，不写命令时默认为echo</p>
+<p>echo “hello%world” | xargs -d “%”   按照%进行分隔解析</p>
+<p>echo -n “hello%world” | xargs -d “%”   按照%进行分隔解析，不打印换行</p>
+<p>echo -n “hello world” | xargs -p   在执行前进行询问，是否执行该命令</p>
+<p>echo -n “hello world” | xargs -t   直接执行命令，并且打印执行了什么命令</p>
+<p>echo -n “hello world” | xargs -I {} echo {}</p>
+<p>echo | xargs echo   仍然会执行该命令，尽管参数为空</p>
+<p>echo | xargs -r echo   参数为空，不执行</p>
+<p>cat test.txt | xargs echo   将test.txt中的文本转换成一行输出，并且\或’’等会删除</p>
+<p>cat test.txt | xargs -n 2 echo   将test.txt中的文本输出，每行两个参数</p>
+<p>cat test.txt | xargs touch   批量创建文件</p>
+<p>cat test.txt | xargs rm   批量删除</p>
+<p><img src="/img/linux/19.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="ls"><a href="#ls" class="headerlink" title="ls"></a>ls</h2><p>ls   查看当前目录下的文件</p>
+<p>ls -a   查看当前目录下的所有文件</p>
+<p>ls -A   查看当前目录下除了.和..以外的所有文件</p>
+<p>ls -l   用一行的内容输出一个文件的相关信息</p>
+<p>ls -R   递归形式列出当前目录和子目录下的文件</p>
+<p>ls -S   按照大小进行排序，从大到小</p>
+<p>ls -t   按最后修改时间排序</p>
+<p><img src="/img/linux/20.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="常用快捷键"><a href="#常用快捷键" class="headerlink" title="常用快捷键"></a>常用快捷键</h2><p>上下键记录了此前执行的命令</p>
+<p>t + pageUp，搜索以t开头的命令</p>
+<p>ctrl + a，移动到行首</p>
+<p>ctrl + e，移动到行尾</p>
+<p>ctrl + w，删除光标前的一个单词</p>
+<p>ctrl + u，删除光标前所有内容</p>
+<p>ctrl + k，删除光标后所有内容</p>
+<p>ctrl + y，复原删除的内容</p>
+<p>ctrl + l，清屏</p>
+<p>tab键用于补全命令，连按两下显示所有可能的命令</p>
+<p>ctrl + r，搜索，右键将命令显示，enter直接执行</p>
+<p><img src="/img/linux/21.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="ln"><a href="#ln" class="headerlink" title="ln"></a>ln</h2><p>硬链接，指向相同的inodeID</p>
+<p>ln test.txt test3.txt   给test.txt创建一个新的硬链接，名称为test3.txt</p>
+<p>ls -il    -i查找文件对应的inodeID   硬链接的两个文件对应的inodeID一致</p>
+<p>软链接，指向文件名</p>
+<p>ln -s test.txt test4.txt   给test.txt创建一个软链接，名称为test4.txt</p>
+<p>ln &#x2F;home&#x2F;test&#x2F;test &#x2F;home&#x2F;test&#x2F;testdir&#x2F;hardlinktest    在不同的目录下创建硬链接</p>
+<p><img src="/img/linux/22.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="pwd"><a href="#pwd" class="headerlink" title="pwd"></a>pwd</h2><p>pwd   打印当前目录</p>
+<p>pwd -L   打印逻辑路径</p>
+<p>pwd -P   打印物理路径</p>
+<p>当存在软链接时，逻辑路径和物理路径有所不同，物理路径是指向的那个目录所在的实际路径</p>
+<p><img src="/img/linux/23.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="mv"><a href="#mv" class="headerlink" title="mv"></a>mv</h2><p>mv test4.txt test&#x2F;   将test4.txt移动到test&#x2F;目录下</p>
+<p>mv test4.txt test&#x2F;movetest.txt    移动，并且重命名</p>
+<p>mv test2.txt movetest.txt   不移动，只重命名</p>
+<p>mv -v test.txt test&#x2F;   打印详细移动信息</p>
+<p>mv -vb test.txt test&#x2F;   -b当目标路径下文件与要移动的文件名相同是，原文件会进行备份</p>
+<p>mv -fv test.txt test&#x2F;   强制覆盖</p>
+<p>mv -iv test.txt test&#x2F;   覆盖前进行询问</p>
+<p>mv -nv test.txt test&#x2F;   如果有重名，不覆盖</p>
+<p><img src="/img/linux/24.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="用户及权限管理"><a href="#用户及权限管理" class="headerlink" title="用户及权限管理"></a>用户及权限管理</h2><p>root、系统用户、普通用户</p>
+<p>cat &#x2F;etc&#x2F;passwd   查看服务器用户信息</p>
+<p>cat &#x2F;etc&#x2F;shadow   查看密码信息</p>
+<p>cat &#x2F;etc&#x2F;login.defs   登录配置项</p>
+<p>cat &#x2F;etc&#x2F;default&#x2F;useradd   useradd命令下的配置</p>
+<p>cat &#x2F;etc&#x2F;group   组相关的信息</p>
+<p>cat &#x2F;etc&#x2F;gshadow   组相关密码信息</p>
+<p><img src="/img/linux/25.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/img/linux/26.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/img/linux/27.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/img/linux/28.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/img/linux/29.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="useradd"><a href="#useradd" class="headerlink" title="useradd"></a>useradd</h2><p>useradd test1   新增用户</p>
+<p>cat &#x2F;etc&#x2F;passwd | grep test1   查找创建用户的相关信息</p>
+<p>passwd test1   设置&#x2F;修改密码</p>
+<p>useradd -p [password] test2   创建用户同时设置密码</p>
+<p>openssl passwd -1 “123456”   -1表示采用md5加密算法加密“123456”</p>
+<p>useradd -b &#x2F;tmp test3   -b创建用户时设置他所在的base目录</p>
+<p>useradd -d &#x2F;tmp&#x2F;tt4 test4   -d创建用户时设置他所在的home目录</p>
+<p>useradd -c “测试用户” test5   -c创建用户时添加备注</p>
+<p>useradd -G root,ceph test6   -G创建用户时修改附属组信息</p>
+<p>useradd -s &#x2F;bin&#x2F;sh test7   -s创建用户时修改他的命令目录</p>
+<p>useradd -D   -D查看创建用户时的默认信息</p>
+<p>useradd -D -b &#x2F;tmp   修改创建用户时的默认设置，-b表示修改base目录</p>
+<p>useradd -r test8   创建系统用户</p>
+<p><img src="/img/linux/30.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="usermod"><a href="#usermod" class="headerlink" title="usermod"></a>usermod</h2><p>usermod -c “测试用户” test1   创建用户之后添加备注信息</p>
+<p>usermod -G bin test1   会删除用户原附属组的信息，并新增当前附属组</p>
+<p>usermod -aG bin test1   只增加，不删除，-a表示append</p>
+<p>usermod -l test3 test2   将test2的用户名改为test3，但是home目录不变</p>
+<p>usermod -p 55555 test1   修改test1用户的密码</p>
+<p><img src="/img/linux/31.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="userdel"><a href="#userdel" class="headerlink" title="userdel"></a>userdel</h2><p>userdel test1   删除用户，但home目录和接受邮件的目录不会被删除</p>
+<p>userdel -r test1   删除用户以及相关文件</p>
+<p><img src="/img/linux/32.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="组管理"><a href="#组管理" class="headerlink" title="组管理"></a>组管理</h2><p>groupadd test   新增组</p>
+<p>groupadd -g 1010 test1   新增组并设置组id</p>
+<p>groupdel test1   删除组</p>
+<p>groupmod -g 1111 test1   修改组的id</p>
+<p>groupmod -n test2 test1   修改test1组名称为test2</p>
+<p><img src="/img/linux/33.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="chown"><a href="#chown" class="headerlink" title="chown"></a>chown</h2><p>chown ceph test1.txt   修改test1.txt的属主信息</p>
+<p>chown ceph:root test1.txt   修改test1.txt的属主和属组信息</p>
+<p>chown ceph test   修改test文件夹的属主信息，内部文件信息保持不变</p>
+<p>chown -R ceph test   修改test文件夹的属主信息，并递归地修改内部文件的属主信息</p>
+<p><img src="/img/linux/34.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="chmod"><a href="#chmod" class="headerlink" title="chmod"></a>chmod</h2><p><img src="/img/linux/35.png" srcset="/img/loading.gif" lazyload></p>
+<p>chmod u+rw test1.txt   当前用户对test1.txt有读写权限</p>
+<p>chmod 760 test1.txt   当前用户又读写执行权限，同组用户有读写权限，其他用户无权限</p>
+<p>chmod g-rw test1.txt   解除同组用户的读写权限</p>
+<p>chmod o+w test   其他用户对该目录添加写权限</p>
+<p>chmod 777 -R test   给test目录下所有文件设置权限</p>
+<p>chmod -cR 760 test   -c显示修改信息</p>
+<p>chmod -vR 760 test   -v无论权限是否修改，都会打印相关信息</p>
+<p><img src="/img/linux/36.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="su"><a href="#su" class="headerlink" title="su"></a>su</h2><p>su test1   将用户切换成test1</p>
+<p>su -c “ls” root   切换用户并执行相关命令</p>
+<p>su -l test1   切换用户，并且目录换成当前用户的home目录</p>
+<p><img src="/img/linux/37.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="sudo"><a href="#sudo" class="headerlink" title="sudo"></a>sudo</h2><p>visudo   编辑etc&#x2F;sudoers文件内容；也可以将用户添加到相应的组里，这样也能执行sudo命令；也可以指定当前用户能执行的命令，而不是可以执行所有命令</p>
+<p>sudo -l   查询当前用户可以执行的一些命令</p>
+<p>sudo -k   此前输入的密码有效期立马过期</p>
+<p>sudo -v   延长有效期</p>
+<p>sudo -u ceph [命令]   使用ceph用户执行命令；没有时，默认使用root用户</p>
+<h2 id="hostname"><a href="#hostname" class="headerlink" title="hostname"></a>hostname</h2><p>hostname   查看主机名</p>
+<p>hostname test1   修改主机名，只是临时的，重启后仍然是原来的主机名</p>
+<p>hostnamectl set-hostname vm1   永久修改hostname</p>
+<p><img src="/img/linux/38.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="alias"><a href="#alias" class="headerlink" title="alias"></a>alias</h2><p>alias ct&#x3D;’cat &#x2F;etc&#x2F;passwd | grep test’   暂时设置，操作系统重启后消失</p>
+<p>alias -p   打印所有别名</p>
+<p>vim ~&#x2F;.bashrc   永久修改</p>
+<p>unalias ct   取消别名</p>
+<p><img src="/img/linux/39.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="cut"><a href="#cut" class="headerlink" title="cut"></a>cut</h2><p>cut -b 1 test1.txt   截取文件中每一行的第一个字节</p>
+<p>cut -b 1-3 test1.txt   截取第1~3个字节</p>
+<p>cut -b 1- test1.txt   截取第1~最后一个字节</p>
+<p>cut -b -3 test1.txt   截取第1~3个字节</p>
+<p>cut -b 1,3,4 test1.txt   截取第1，3，4个字节</p>
+<p>cut -nb 1 test1.txt   针对汉字，不会只截取一个字节</p>
+<p>cut -c 1 test1.txt   截取一个字符</p>
+<p>cut -d “ “ -f 1 test.txt   -d表示以” “为分隔符，-f表示字段</p>
+<p>cut -d “ “ -f 1 -s test.txt   不包含分隔符的不再打印</p>
+<p>cut -d “ “ -f 1- -s –output-delimiter “$$$”   设置输出分隔符</p>
+<p>cat &#x2F;etc&#x2F;passwd | grep test | cut -d “:” -f 1</p>
+<p><img src="/img/linux/40.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="tr"><a href="#tr" class="headerlink" title="tr"></a>tr</h2><p>echo ‘abcabc’ | tr ‘a’ ‘z’   将标准输入中的a转换为z</p>
+<p>echo ‘abcabc’ | tr ‘ab’ ‘z’   按单字符逻辑进行替换，ab替换为zz</p>
+<p>echo ‘abcabc’ | tr -t ‘ab’ ‘z’   强制匹配，ab替换为z</p>
+<p>echo ‘abcabc’ | tr ‘\n’ ‘\t’   支持转义</p>
+<p>echo ‘abcabc’ | tr ‘a-z’ ‘A-Z’   支持字符集</p>
+<p>echo ‘abc123’ | tr ‘0-9’ ‘A-Z’   支持字符集</p>
+<p>echo ‘abc123’ | tr ‘[:lower:]’ ‘[:upper:]’   小写字母转换成大写字母</p>
+<p>echo ‘abc123’ | tr ‘[:alpha:]’ ‘-‘   将所有字母转换为-</p>
+<p>echo ‘abc123’ | tr ‘[:digit:]’ ‘-‘   将所有数字转换为-</p>
+<p>echo ‘abc123’ | tr -d ‘[:digit:]’   删除数字</p>
+<p>echo ‘abc123’ | tr -cd ‘[:digit:]’   保留数字</p>
+<p>echo ‘aaaaab’ | tr -s ‘a’   压缩字母a</p>
+<p><img src="/img/linux/41.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="sort"><a href="#sort" class="headerlink" title="sort"></a>sort</h2><p>cat &#x2F;etc&#x2F;passwd | tail -n 10 | sort</p>
+<p>cat &#x2F;etc&#x2F;passwd | tail -n 10 | sort -r   -r字典序降序排列</p>
+<p>cat &#x2F;etc&#x2F;passwd | tail -n 10 | sort -t “:” -k 3   -t分隔符，-k对第几列进行排序</p>
+<p>cat &#x2F;etc&#x2F;passwd | tail -n 10 | sort -t “:” -k 3 -n   -n数值大小排序</p>
+<p>ls -lh | sort -k 5 -h   -h将相应的单位转换为数值后排序，如K这个单位</p>
+<p>cat &#x2F;etc&#x2F;passwd | tail -n 10 | sort -t “:” -k 3 -n -o test.txt   -o将标准输出保存到test.txt</p>
+<p>sort test.txt   不会修改原文件中的内容，空白行会排在最前面</p>
+<p>sort -u test.txt   -u去重</p>
+<p>sort -c test.txt   查看文件是否有序</p>
+<p>sort -C test.txt   不会输出是否有序的结果，需要通过状态码查看echo $?</p>
+<p><img src="/img/linux/42.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="uniq"><a href="#uniq" class="headerlink" title="uniq"></a>uniq</h2><p>uniq test.txt   原文本不变</p>
+<p>uniq test.txt test2.txt   将去重后的文件保存为test2.txt</p>
+<p>uniq -c test.txt   打印不同的行出现的次数</p>
+<p>uniq -d test.txt   只打印重复的行</p>
+<p>uniq -u test.txt   只打印不重复的行</p>
+<p>uniq -i test.txt   忽略大小写去重</p>
+<p>uniq  -f 1 test.txt   跳过每一行的第一列进行去重处理</p>
+<p>uniq -s 1 test.txt   跳过每一行的第一个字符进行去重处理</p>
+<p>uniq -w 1 test.txt   按每一行的第一个字符进行去重 </p>
+<p><img src="/img/linux/43.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="watch"><a href="#watch" class="headerlink" title="watch"></a>watch</h2><p>watch ‘tail test.txt’ </p>
+<p>watch -n 5 ‘tail test.txt’   -n修改时间间隔</p>
+<p>watch -n 5 -d ‘tail test.txt’   -d高亮显示修改前后不同的内容</p>
+<p>watch -n 5 -t ‘tail test.txt’   -t取消标题行</p>
+<p>watch -g ‘tail test.txt’   发生变化后直接退出，不再监控</p>
+<p>watch -e ‘tail test.txt’   命令执行失败后直接退出，例如删除test.txt后命令会执行失败</p>
+<p><img src="/img/linux/44.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="top"><a href="#top" class="headerlink" title="top"></a>top</h2><p>top  有四个窗口可以查看，g+(1~4)用于选择跳转哪个窗口</p>
+<p>1默认窗口   2Job窗口   3内存窗口   4User窗口</p>
+<p>A   同时展示四个窗口</p>
+<p>a   往下一个窗口</p>
+<p>w   往上一个窗口</p>
+<p><img src="/img/linux/45.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/img/linux/46.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/img/linux/47.png" srcset="/img/loading.gif" lazyload></p>
+<p>top中的交互式命令</p>
+<p>h — 跳转到帮助文档，记录了所有交互式命令</p>
+<p>Z — 颜色配置 </p>
+<p>E — 循环切换概览区域内存单位</p>
+<p>e — 循环切换表中的内存单位</p>
+<p>其余命令看帮助文档即可</p>
+<p><img src="/img/linux/48.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/img/linux/49.png" srcset="/img/loading.gif" lazyload></p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/IT/" class="print-no-link">#IT</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Linux常用命令</div>
+      <div>http://example.com/2023/12/19/Linux常用命令/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>lalaland</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年12月19日</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>更新于</div>
+          <div>2023年12月19日</div>
+        </div>
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/12/19/git%E5%85%A5%E9%97%A8/" title="Git入门">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Git入门</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  var relativeDate = function() {
+    var updatedTime = document.getElementById('updated-time');
+    if (updatedTime) {
+      var text = updatedTime.textContent;
+      var reg = /\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:Z|[+-]\d{2}:\d{2})/;
+      var matchs = text.match(reg);
+      if (matchs) {
+        var relativeTime = moment(matchs[0]).fromNow();
+        updatedTime.textContent = text.replace(reg, relativeTime);
+      }
+      updatedTime.style.display = '';
+    }
+  };
+  Fluid.utils.createScript('https://lib.baomitu.com/moment.js/2.29.4/moment.min.js', function() {
+    if (!'zh-cn'.startsWith('en')) {
+      Fluid.utils.createScript('https://lib.baomitu.com/moment.js/2.29.4/locale/zh-cn.min.js', function() {
+        relativeDate();
+      });
+    } else {
+      relativeDate();
+    }
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

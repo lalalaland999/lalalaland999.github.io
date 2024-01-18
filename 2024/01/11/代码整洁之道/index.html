@@ -1,0 +1,1048 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/2.jpg">
+  <link rel="icon" href="/img/2.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="lalaland">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="第一章：整洁代码·写整洁代码，需要遵循大量的小技巧，贯彻刻苦习得的“整洁感”，这种“代码感”是关键所在。 第二章：有意义的命名·选好名称  上图中，theList、0下标、4、list1的意义都不明确，因此需要明确每个变量的命名  进一步可以将int[]另写为一个类Cell，抽象出isFlagged方法  ·命名避免误导 ·做有意义的区分： 1）以数字系列命名  上述代码貌似看起来没有问题，代码逻">
+<meta property="og:type" content="article">
+<meta property="og:title" content="代码整洁之道">
+<meta property="og:url" content="http://example.com/2024/01/11/%E4%BB%A3%E7%A0%81%E6%95%B4%E6%B4%81%E4%B9%8B%E9%81%93/index.html">
+<meta property="og:site_name" content="lalaland">
+<meta property="og:description" content="第一章：整洁代码·写整洁代码，需要遵循大量的小技巧，贯彻刻苦习得的“整洁感”，这种“代码感”是关键所在。 第二章：有意义的命名·选好名称  上图中，theList、0下标、4、list1的意义都不明确，因此需要明确每个变量的命名  进一步可以将int[]另写为一个类Cell，抽象出isFlagged方法  ·命名避免误导 ·做有意义的区分： 1）以数字系列命名  上述代码貌似看起来没有问题，代码逻">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/cleancode/cover.png">
+<meta property="article:published_time" content="2024-01-11T00:44:33.000Z">
+<meta property="article:modified_time" content="2024-01-11T00:57:56.163Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="IT">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/cleancode/cover.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>代码整洁之道 - lalaland</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+    <!-- Google tag (gtag.js) -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        Fluid.utils.createScript("https://www.googletagmanager.com/gtag/js?id=", function() {
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag('js', new Date());
+          gtag('config', '');
+        });
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+<meta name="generator" content="Hexo 7.0.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 100vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/2.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="代码整洁之道"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-01-11 08:44" pubdate>
+          2024年1月11日 早上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          9.1k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          76 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+        <div class="scroll-down-bar">
+          <i class="iconfont icon-arrowdown"></i>
+        </div>
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">代码整洁之道</h1>
+            
+              <p id="updated-time" class="note note-info" style="display: none">
+                
+                  
+                    本文最后更新于 2024-01-11T08:57:56+08:00
+                  
+                  
+
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="第一章：整洁代码"><a href="#第一章：整洁代码" class="headerlink" title="第一章：整洁代码"></a>第一章：整洁代码</h2><p>·写整洁代码，需要遵循大量的小技巧，贯彻刻苦习得的“整洁感”，这种“代码感”是关键所在。</p>
+<h2 id="第二章：有意义的命名"><a href="#第二章：有意义的命名" class="headerlink" title="第二章：有意义的命名"></a>第二章：有意义的命名</h2><p>·选好名称</p>
+<p><img src="/../../../img/cleancode/image-20231229091103936.png" srcset="/img/loading.gif" lazyload></p>
+<p>上图中，theList、0下标、4、list1的意义都不明确，因此需要明确每个变量的命名</p>
+<p><img src="/../../../img/cleancode/image-20231229091317906.png" srcset="/img/loading.gif" lazyload></p>
+<p>进一步可以将int[]另写为一个类Cell，抽象出isFlagged方法</p>
+<p><img src="/../../../img/cleancode/image-20231229091327367.png" srcset="/img/loading.gif" lazyload></p>
+<p>·命名避免误导</p>
+<p>·做有意义的区分：</p>
+<p>1）以数字系列命名</p>
+<p><img src="/../../../img/cleancode/image-20231229092358398.png" srcset="/img/loading.gif" lazyload></p>
+<p>上述代码貌似看起来没有问题，代码逻辑也较为简单，但是将命名修改为source和destination会更好，用a1和a2进行区分不够清晰，需要阅读代码后才能明白两个数组的作用</p>
+<p>2）废话&#x2F;冗余</p>
+<p>假设有一个Product类，如果还有ProductInfo类和ProductData类，那么这两者没有较大区别，无法从名称上进行快速区分，尽管在业务复杂的情况下可能确实需要这两个类，但使用者需要具体看类内部的成员变量与方法进行区分。</p>
+<p>同样地，还有getActiveAccount()、getActiveAccounts()、getActiveAccoutnInfo()，开发者无法确定该调用哪个函数，因此命名应该有意义，而不是为了完成代码开发的任务而随意命名</p>
+<p>·使用读的出来的名称</p>
+<p><img src="/../../../img/cleancode/image-20231229093537771.png" srcset="/img/loading.gif" lazyload></p>
+<p>上面那种写法估计只有写代码的本人能看懂</p>
+<p>·使用可搜索的名称：若变量或常量在代码中多处使用，应该赋予便于搜索的名称，便于搜索的名称一般会更长一些。如果使用单字母命名，如e，既无法表示命名意义，又不便于搜索</p>
+<p>·避免使用编码：</p>
+<p>1）将类型写入名称，如phoneNumber、phoneString</p>
+<p>2）使用无意义的前缀，如m_dsc</p>
+<p>·避免思维映射：不应当让读者在脑中把你的名称翻译为他们熟知的名称，因此命名时要确定好大家公认的术语</p>
+<p>·类名：类名和对象名应当是名词或名词短语，类名不应当是动词</p>
+<p>·方法名：应当是动词或动词短语，如postPayment、deletePage、save等</p>
+<p>·别扮可爱：命名别太耍宝</p>
+<p>·每个概念对应一个词：如fetch、retrieve和get都能表示一个意思，保持统一</p>
+<p>·使用解决方案领域名称：只有程序员会读你的代码，因此如JobQueue等的命名是非常清晰可靠的</p>
+<p>·添加有意义的语境：例如state命名，单看此名称无法推测它的含义，州？状态？因此需要添加有意义的语境，如addrState表示地址中的州，当然最好还是将地址抽象为一个类，这样state在地址类的语境里含义就明确了</p>
+<p>·不要添加无意义的语境：如给大量的类添加一个前缀，代码自动补全时会出现一大堆列表</p>
+<h2 id="第三章：函数"><a href="#第三章：函数" class="headerlink" title="第三章：函数"></a>第三章：函数</h2><p>·短小：函数的第一规则是要短小，例如if、else、while语句代码块中代码最好只有一行，一般为一个函数调用语句</p>
+<p>·只做一件事：函数应该做一件事，做好这件事，只做这件事</p>
+<p>·每个函数一个抽象层级：抽象出来的方法位于较高层，普通的代码逻辑操作位于较低层。函数中最好保证都处于同一个抽象层级，这样就可以让代码拥有自顶向下的阅读顺序，像一颗多叉树一样，将一段逻辑逐步分解到最底层的代码逻辑</p>
+<p>·使用描述性名称：给函数取个好名称，用于描述函数做的事，别害怕长名称</p>
+<p>·函数参数：最理想的参数数量是0，其次是1，再次是2，应尽量避免3。</p>
+<p>·标识参数：函数中涉及标识参数不合理，例如函数参数中带有布尔值，这代表该函数会基于表示判断做不同的事，应该让标识位于上一层，并且基于该标识调用不同的函数</p>
+<p>·二元函数：二元函数不算恶劣，但也可以尽可能将其转换为一元函数</p>
+<p>·参数对象：如果函数需要两个、三个或三个以上的参数，可以考虑某些参数是否可以封装为类</p>
+<p>·动词与关键字：函数名字应当较好地解释函数的意图，参数的顺序等。对于一元函数，函数和参数应当形成一种良好的动词&#x2F;名词形式，如write(name)</p>
+<p>·无副作用：如函数名为checkPassword的如下代码，尽管函数名为checkPassword，但在方法内部还执行的Session的初始化操作。存在一定的风险，应当至少把函数名改为checkPasswordAndInitializeSession，虽然这还是违反了“只做一件事”的原则</p>
+<p><img src="/../../../img/cleancode/image-20240108094819827.png" srcset="/img/loading.gif" lazyload></p>
+<p>·输出参数：参数多数时候用作函数的输入，然而在特定情况下参数会用作输出，如public void appendFooter(StringBuffer report)。针对输出参数，最好采用report.appendFooter()的方式进行调用。应当尽量避免输出参数的使用。</p>
+<p>·分隔指令与询问：函数要么做什么事，要么回答什么事。如果函数同时修改某对象的状态、返回该对象的相关信息，会导致混乱。如public boolean set(String attribute, String value)，该函数的本意是设置某个指定属性，如果设置成功返回true，如果属性不存在返回false。那么具体使用时代码为if (set(“username”, “unclebob”))，会给读者造成混淆，这是在判断username属性是否之前就已经为unclebob，还是username属性是否成功设置为unclebob。为了解决这个问题，可以将函数命名为setAndCheckIfExists。更好的方案是将检查属性是否存在和设置属性抽象为两个方法，即attributeExists()和setAttribute()</p>
+<p>·使用异常替代返回错误码：如下代码，三个操作中都返回错误码，错误码处理中使用了if else的三层嵌套，并且错误码的出现和错误码的处理不在同一个位置。</p>
+<p><img src="/../../../img/cleancode/image-20240108100848251.png" srcset="/img/loading.gif" lazyload></p>
+<p>解决方案是使用异常，这样代码更加清晰，并且错误码和异常信息都在各自的函数中处理</p>
+<p><img src="/../../../img/cleancode/image-20240108101132051.png" srcset="/img/loading.gif" lazyload></p>
+<p>·抽离try&#x2F;catch代码：try&#x2F;catch代码块会搞乱代码结构，并且把错误处理与正常流程混在一起，可以将try&#x2F;catch代码块的主题抽象为函数。具体处理如下。</p>
+<p><img src="/../../../img/cleancode/image-20240108101553173.png" srcset="/img/loading.gif" lazyload></p>
+<p>·错误处理就是一件事：处理错误的函数不应该做其他事，这意味着try是该函数的第一个单词，并且在catch&#x2F;finally后也不应该其他逻辑处理</p>
+<p>·Error.java依赖磁铁：返回错误码通常意味着有个类或者枚举，定义了所有错误码，这样的类&#x2F;枚举就是依赖磁铁dependency magnet，其他许多类都得导入和使用它，当Error枚举类修改时，其他类都得重新编译和部署。使用异常代替错误码，新异常可以从异常类中派生出来，无需重新编译或部署</p>
+<p>·别重复：减少代码的重复，当代码在多处被反复使用时，需要将其抽象为方法，否则如果代码需要修改，就必须在多个地方进行。代码开发中许多原则和实践规则都是为了控制和消除重复而创建</p>
+<p>·如何写出符合上述规范的函数：刚开始写的函数可能都冗长而复杂，后续可以打磨，并且保证测试通过</p>
+<h2 id="第四章：注释"><a href="#第四章：注释" class="headerlink" title="第四章：注释"></a>第四章：注释</h2><p>好的注释可以帮助读者理解，坏的注释会使读者变得困惑。</p>
+<p>代码表达是最重要的，好的代码可以让读者不需要注释即可清楚地明白这段逻辑的意义。针对难以表达清楚的地方或者需要特别注意的地方，可以使用注释。同时也要保证注释是可维护的，而不是一成不变。</p>
+<p>·注释不能美化糟糕的代码：带有少量注释的整洁而有表达力的代码，要好于带有大量注释的零碎而复杂的代码。与其花时间解释糟糕的代码，不如花时间优化代码</p>
+<p>·用代码来阐述：创建一个与注释所言同一事物的函数，而避免不重要的注释。参见两个写法的对比。</p>
+<p><img src="/../../../img/cleancode/image-20240108110519868.png" srcset="/img/loading.gif" lazyload></p>
+<p>·好注释：有些注释是必须的，也是有利的。不过，唯一真正好的注释是想办法不去写的注释。</p>
+<p>1）法律信息：版权及著作权声明有理由写在每个源文件的开头</p>
+<p>2）提供信息的注释：解释入参、返回值、正则表达式格式等</p>
+<p>3）对意图的解释：对于部分逻辑处理，可以写出自己当时如此编写代码的原因，参见以下的两个例子</p>
+<p><img src="/../../../img/cleancode/image-20240108111124984.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/../../../img/cleancode/image-20240108111135195.png" srcset="/img/loading.gif" lazyload></p>
+<p>4）阐释：注释把某些晦涩的参数或者返回值翻译为某种可读形式</p>
+<p><img src="/../../../img/cleancode/image-20240108111322507.png" srcset="/img/loading.gif" lazyload></p>
+<p>5）警示：用于警示当前代码存在一定的风险</p>
+<p><img src="/../../../img/cleancode/image-20240108111430390.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/../../../img/cleancode/image-20240108111445569.png" srcset="/img/loading.gif" lazyload></p>
+<p>6）TODO注释：一种应该做，但目前还没做的工作。可能是提醒删除某个不必要的特性，或者提示他人注意某个问题等</p>
+<p><img src="/../../../img/cleancode/image-20240108111723325.png" srcset="/img/loading.gif" lazyload></p>
+<p>7）放大：放大某种看起来不合理处理的重要性</p>
+<p><img src="/../../../img/cleancode/image-20240108111818759.png" srcset="/img/loading.gif" lazyload></p>
+<p>8）公共api中的Javadoc</p>
+<p>·坏注释：坏注释都是糟糕的代码的支撑或者接口，基本等于程序员自说自话</p>
+<p>1）喃喃自语：如果只是因为你觉得应该或者过程需要而添加注释，那就是无谓之举。如果决定要写注释，就要将注释写清晰，保证他人也能看懂</p>
+<p><img src="/../../../img/cleancode/image-20240108112235926.png" srcset="/img/loading.gif" lazyload></p>
+<p>2）多余的注释：如下的注释，读注释的时间也许比读代码花的时间还长。代码本身就很简单，注释既没有提供代码本身以外的信息，也没有证明代码的意义或者是意图</p>
+<p><img src="/../../../img/cleancode/image-20240108112402531.png" srcset="/img/loading.gif" lazyload></p>
+<p>3）误导性注释：保证代码和注释的一致性，不然注释会误导他人</p>
+<p>4）循规式注释：每个函数都要有Javadoc或每个变量都要有注释是不必要的</p>
+<p>5）日志式注释：每次编辑代码时，在开头添加一条注释，记录每次的修改。这种也是不必要的，过于冗长。</p>
+<p>6）废话注释</p>
+<p><img src="/../../../img/cleancode/image-20240108113141612.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/../../../img/cleancode/image-20240108113154560.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/../../../img/cleancode/image-20240108113207084.png" srcset="/img/loading.gif" lazyload></p>
+<p>7）能用函数或变量表达清楚就别用注释，if中一大堆的代码可以用变量定义，使其逻辑更加清晰，而不是添加注释</p>
+<p><img src="/../../../img/cleancode/image-20240108113439972.png" srcset="/img/loading.gif" lazyload></p>
+<p>8）位置标记</p>
+<p><img src="/../../../img/cleancode/image-20240108113602395.png" srcset="/img/loading.gif" lazyload></p>
+<p>9）归属与署名：代码控制系统会记录谁做了修改</p>
+<p><img src="/../../../img/cleancode/image-20240108143554805.png" srcset="/img/loading.gif" lazyload></p>
+<p>10）注释掉的代码：废弃的代码直接删除即可，代码控制系统会帮助记录此前的代码，不用担心删去的代码找不到了。直接将代码注释，其他人也不敢删，会认为代码被注释有其原因。</p>
+<p><img src="/../../../img/cleancode/image-20240108143643607.png" srcset="/img/loading.gif" lazyload></p>
+<p>11）注释信息过多</p>
+<p><img src="/../../../img/cleancode/image-20240108144002167.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="第五章：格式"><a href="#第五章：格式" class="headerlink" title="第五章：格式"></a>第五章：格式</h2><p>·概念间垂直方向上的区隔：每行展现一个表达式或子句，每组代码行展示一个完整的思路，思路之间用空白行分隔开</p>
+<p><img src="/../../../img/cleancode/image-20240108145126088.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/../../../img/cleancode/image-20240108145110780.png" srcset="/img/loading.gif" lazyload></p>
+<p>如果删除空白行，可读性大大降低</p>
+<p><img src="/../../../img/cleancode/image-20240108145154267.png" srcset="/img/loading.gif" lazyload></p>
+<p>·垂直方向上的靠近： 紧密相关的代码应该互相靠近</p>
+<p><img src="/../../../img/cleancode/image-20240108145446707.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/../../../img/cleancode/image-20240108145458085.png" srcset="/img/loading.gif" lazyload></p>
+<p>孰优孰劣，一目了然</p>
+<p>·垂直距离</p>
+<p>1）变量声明：</p>
+<p>本地变量在函数的顶部出现</p>
+<p><img src="/../../../img/cleancode/image-20240108150410314.png" srcset="/img/loading.gif" lazyload></p>
+<p>实体变量在类的顶部声明。如果不在顶部声明，如下所示，这两个实体变量只会被无意间发现</p>
+<p><img src="/../../../img/cleancode/image-20240108150455981.png" srcset="/img/loading.gif" lazyload></p>
+<p>2）相关函数：如果某个函数调用了另一个，应该将它们放在一起，并且调用者尽可能放在被调用者上方</p>
+<p>3）概念相关：概念相关的代码放在一起</p>
+<p><img src="/../../../img/cleancode/image-20240108150858283.png" srcset="/img/loading.gif" lazyload></p>
+<p>·水平方向上的区隔与靠近：巧用空格</p>
+<p><img src="/../../../img/cleancode/image-20240108151620731.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/../../../img/cleancode/image-20240108151632858.png" srcset="/img/loading.gif" lazyload></p>
+<p>·水平对齐：</p>
+<p><img src="/../../../img/cleancode/image-20240108152051012.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/../../../img/cleancode/image-20240108152102323.png" srcset="/img/loading.gif" lazyload></p>
+<p>尽力对齐一组声明中的变量名，或一组赋值语句中的右值。这种做法看起来较为整洁，但是也许会让读者更加关注变量名和右值，而忽视类型和赋值。</p>
+<p>因此，也可以采用不对齐的声明和赋值</p>
+<p><img src="/../../../img/cleancode/image-20240108152239732.png" srcset="/img/loading.gif" lazyload></p>
+<p>·缩进：大多数类声明不缩进，类中的方法相对该类缩进一个层级，方法的实现相对方法声明缩进一个层级，代码块的实现相对于其容器代码块缩进一个层级</p>
+<p>以下是有无缩进的区别</p>
+<p><img src="/../../../img/cleancode/image-20240108152641638.png" srcset="/img/loading.gif" lazyload></p>
+<p>·团队规则：遵循团队的代码格式</p>
+<h2 id="第六章：对象和数据结构"><a href="#第六章：对象和数据结构" class="headerlink" title="第六章：对象和数据结构"></a>第六章：对象和数据结构</h2><p>·数据抽象：抽象的数据具有更高的扩展性</p>
+<p><img src="/../../../img/cleancode/image-20240108153846529.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/../../../img/cleancode/image-20240108153918776.png" srcset="/img/loading.gif" lazyload></p>
+<p>·数据、对象的反对称性</p>
+<p><img src="/../../../img/cleancode/image-20240108154917314.png" srcset="/img/loading.gif" lazyload></p>
+<p>Geometry类操作三个形状类，形状类都是简单的数据结构，没有任何行为，行为都在Geometry类中</p>
+<p><img src="/../../../img/cleancode/image-20240108155050062.png" srcset="/img/loading.gif" lazyload></p>
+<p>在多态式写法中，各自的形状类实现Shape接口，同时实现接口中定义的area()方法</p>
+<p>以上两种方法各有优点，当形状类需要扩展时，第二种方法更好，无需修改此前的代码，只需要新定义形状类即可，而第一种方法除了要新定义形状类外，还需要修改Geometry类中的函数逻辑；当需要增加新函数时，第一种方法更好，只需要在Geometry类中新增函数，无需再其他类中改动，而第二种方法需要在接口和各形状类中都要新增，但感觉这两种方法工作量都差不多。总体来看，还是第二种方法更好。</p>
+<p>·得墨忒耳律：类C的方法f只应该调用以下对象的方法</p>
+<p>1）C	</p>
+<p>2）由f创建的对象</p>
+<p>3）作为参数传递给f的对象</p>
+<p>4）由C的实体变量持有的对象</p>
+<p>·数据传送对象：最为精炼的数据结构，是一个只有公共变量、没有函数的类，这种数据结构被称为数据传送对象，或DTO（Data Transfer Objects）。DTO是非常有用的结构，尤其是在与数据库通信、或解析套接字传递的消息之类的场景</p>
+<p>对象暴露行为，隐藏数据，便于添加新对象类型而无需修改既有行为，同时也难以在既有对象中添加新行为。数据结构暴露数据，没有明显的行为，便于向既有数据结构添加新行为，同时也难以向既有函数添加新数据结构。</p>
+<h2 id="第七章：错误处理"><a href="#第七章：错误处理" class="headerlink" title="第七章：错误处理"></a>第七章：错误处理</h2><p>·使用异常而非返回码</p>
+<p>·使用不可控异常：可控异常会违反开放&#x2F;闭合原则，如果在方法中抛出可控异常，而catch语句在三个层级以上，就得在catch语句和抛出异常处之间的每个方法签名中声明该异常。对较低层级的修改，会影响较高层级的签名，修改好的模块必须重新构建、发布，即使它们自身所关注的东西并没有改动。</p>
+<p>·给出异常发生的环境说明：应创建信息充分的错误消息，并和异常一起传递出去。在消息中，包括失败的操作和失败类型等。</p>
+<p>·依调用者需要定义异常类：当我们在定义异常类时，应该考虑它们如何被捕获</p>
+<p><img src="/../../../img/cleancode/image-20240109090454344.png" srcset="/img/loading.gif" lazyload></p>
+<p>如上所示的异常分类中，语句中包含了一大堆重复代码，可以对其进行简化</p>
+<p><img src="/../../../img/cleancode/image-20240109090558065.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/../../../img/cleancode/image-20240109090612783.png" srcset="/img/loading.gif" lazyload></p>
+<p>·有时可以不用异常：如下的例子</p>
+<p><img src="/../../../img/cleancode/image-20240109091018089.png" srcset="/img/loading.gif" lazyload></p>
+<p>修改后，通过新建PerDiemMealExpenses类避免了异常处理</p>
+<p><img src="/../../../img/cleancode/image-20240109091037526.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/../../../img/cleancode/image-20240109091047481.png" srcset="/img/loading.gif" lazyload></p>
+<p>·别返回null值：如下的代码需要通过大量的代码去判断null值。（不过该检查还是得检查，不然空指针异常了）</p>
+<p><img src="/../../../img/cleancode/image-20240109091659059.png" srcset="/img/loading.gif" lazyload></p>
+<p>尽量不要返回null值，可以通过抛异常或者特例对象的方式解决</p>
+<p><img src="/../../../img/cleancode/image-20240109091731127.png" srcset="/img/loading.gif" lazyload></p>
+<p>针对以上代码，可以让getEmployees()返回null的时候返回空列表，这样就无需判断null值</p>
+<p><img src="/../../../img/cleancode/image-20240109091808919.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/../../../img/cleancode/image-20240109091821446.png" srcset="/img/loading.gif" lazyload></p>
+<p>·别传递null值：</p>
+<p><img src="/../../../img/cleancode/image-20240109092547290.png" srcset="/img/loading.gif" lazyload></p>
+<p>如上的代码，如果有人传入null值就会得到空指针异常</p>
+<p>如何修正？可以创建一个新的异常类型并抛出</p>
+<p><img src="/../../../img/cleancode/image-20240109092629318.png" srcset="/img/loading.gif" lazyload></p>
+<p>在大多数编程语言中，没有良好的方法去应对由调用者意外传入的null值，恰当的做法就是禁止传递null值，避免以外</p>
+<h2 id="第八章：边界"><a href="#第八章：边界" class="headerlink" title="第八章：边界"></a>第八章：边界</h2><p>·使用第三方代码</p>
+<p>·浏览和学习边界</p>
+<p>·学习性测试</p>
+<p>·使用尚不存在的代码：意思是某个项目依赖与其他人的代码，但其他人还没有定义相应的接口，此时我们可以自己定义需要使用的接口 ，使用尚不存在的代码进行代码开发</p>
+<p>·整洁的边界：包装第三方代码，或者使用Adapter模式将我们的接口转换为第三方提供的接口，来实现整洁的边界</p>
+<h2 id="第九章：单元测试"><a href="#第九章：单元测试" class="headerlink" title="第九章：单元测试"></a>第九章：单元测试</h2><p>·TDD三大定律：TDD要求我们在编写生产代码前先编写单元测试，如下是TDD三大定律</p>
+<p>1）在编写不能通过的单元测试前，不可编写生产代码</p>
+<p>2）只可编写刚好无法通过的单元测试，不能编译也算不通过</p>
+<p>3）只可编写刚好足以通过当前失败测试的生产代码</p>
+<p>·保证测试整洁：脏测试等同于没测试。测试必须随生产代码的演进而修改，测试越脏，就越难修改。需要花更多的时间塞进新测试。修改生产代码后，旧测试可能会失败，测试代码中乱七八糟的东西会阻碍代码再次通过。随着版本迭代，团队维护测试代码的代价越来越高，最后只能扔掉整个测试代码组。没有了测试代码，开发者无法确保对系统某个部分的修改不会影响到系统的其他部分，故障率开始增加。所以，必须保证测试的整洁。乱七八糟的测试可能比没测试还差。</p>
+<p>·整洁的测试</p>
+<p>1）保证可读性，符合构造-操作-检验的模式</p>
+<p>2）面向特定领域的测试语言：测试中没有直接使用对系统进行操作的API，而是重构打造一套包装了这些APi的函数和工具代码</p>
+<p>3）双重标准：测试在测试环境中执行，与生产环境中的生产代码还是有所区别，在测试中也许不那么考虑内存或者CPU效率，不过仍然要保持整洁</p>
+<p>·每个测试一个概念：每个测试函数只测试一个概念                                                                                                                                                                                                                                                                                                                                                                                                                                                              </p>
+<p>·FIRST规则</p>
+<p>1）F：Fast，快速，测试应该能快速运行</p>
+<p>2）I：Independent，测试之间相互独立，某个测试不应为下一个测试设定条件。当测试相互依赖时，一个没通过的测试会导致一连串的测试失败</p>
+<p>3）R：Repeatable，测试应当可以在任何环境中重复通过</p>
+<p>4）S：Self-Validating：测试应该由布尔值输出，无论是通过或失败，不应该通过查看日志来确认测试是否通过</p>
+<p>5）T：Timely，测试应该及时编写。单元测试应该在使其通过的生产代码之前编写，如果在编写生产代码之后编写测试，可能会发现生产代码难以测试。你可能会认为某些生产代码本身难以测试，可能不会去设计可测试的代码</p>
+<h2 id="第十章：类"><a href="#第十章：类" class="headerlink" title="第十章：类"></a>第十章：类</h2><p>·类的组织：遵循标准的Java约定，类从一组变量列表开始。先是公共静态常量，然后是私有静态变量，以及私有实体变量。公共函数跟在变量列表之后，某个公共函数调用的私有工具函数紧跟在该公共函数后面，符合自顶向下原则</p>
+<p>·类应该短小：系统应该由许多短小的类而不是少量巨大的类组成。</p>
+<p>1）单一权责原则（SRP）：类或模块应有且只有一条加以修改的理由。类只应一个权责——只有一条修改的理由。鉴别权责（修改的理由）常常可以帮助我们在代码中认识并创建出更好的抽象</p>
+<p>2）内聚：类应该只有少量的实体变量，类中的每个方法都应该操作一个或多个这种变量。如果一个类中的每个变量都被每个方法所使用，则该类具有最大的内聚性。一般来说，创建这种极大化内聚类既不可取也不可能，但是还是期望类的内聚性保持在较高的位置，类中的方法和变量相互依赖，互相结合成一个逻辑整体。</p>
+<p>3）保持内聚性会得到许多短小的类：可以理解，一个冗长的类中，有些方法可能只操作到部分变量，证明内聚性较低。此时，将部分变量和方法抽象到新的类中，会提高内聚性，同时得到许多短小的类。</p>
+<p>·为了修改而组织</p>
+<p>如下的代码有多种修改理由，违背SRP原则，需要进行重构</p>
+<p><img src="/../../../img/cleancode/image-20240109113028507.png" srcset="/img/loading.gif" lazyload></p>
+<p>重构后如下所示</p>
+<p><img src="/../../../img/cleancode/image-20240109113154416.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/../../../img/cleancode/image-20240109113205603.png" srcset="/img/loading.gif" lazyload></p>
+<p>重构后如果需要增加update语句，只需要在相应的小类中修改，而不会影响其他类。如果按重构前的写法，修改会在sql大类中执行，风险较大。重构后也符合开放-闭合原则（OCP），类应当对扩展开放，对修改封闭。在理想系统中，我们希望通过扩展系统而非修改现有代码来添加新特性</p>
+<h2 id="第十一章：系统"><a href="#第十一章：系统" class="headerlink" title="第十一章：系统"></a>第十一章：系统</h2><p>·将系统的构造与使用分开：软件系统应将启始过程与启始过程之后的运行时逻辑分离开，在启始过程中构建应用对象，也会存在互相缠结的依赖关系</p>
+<p>1）分解main：将构造与使用分开的方法之一是将全部构造过程搬迁到main中</p>
+<p>2）工厂：应用程序通过抽象工厂模式自行控制对象的创建，构造能力属于抽象工厂，应用程序与如何构建对象的细节是分离开的</p>
+<p>3）依赖注入：依赖注入可以实现分离构造与使用。如Spring框架的IOC模块</p>
+<p>·扩容</p>
+<p>·Java代理</p>
+<p>·纯Java AOP框架</p>
+<p>·AspectJ的方面</p>
+<p>·测试驱动系统架构</p>
+<p>·优化决策</p>
+<p>·明智使用添加了可论证价值的标准</p>
+<p>·系统需要领域特定语言</p>
+<h2 id="第十二章：迭进"><a href="#第十二章：迭进" class="headerlink" title="第十二章：迭进"></a>第十二章：迭进</h2><p>·通过迭进设计达到整洁目的</p>
+<p>·简单设计规则</p>
+<p>1）运行所有测试：确保系统完全可测试能帮助我们创建更好的设计。只要系统可测试，就会导向保持类短小且目的单一的设计方案。遵循SRP的类，测试起来较为简单。测试编写得越多，就越能持续走向编写较易测试的代码。</p>
+<p>2）重构：提升内聚性，降低耦合度，切分关注面，模块化系统性关注面，缩小函数和类的尺寸，选用更好的名称等，测试消除了对清理代码就会破坏代码的恐惧</p>
+<p>3）不可重复：重复是拥有良好设计系统的大敌，它代表了额外的工作、额外的风险和额外且不必要的复杂度。可以通过模板方法模式来消除明显的重复，例如有两个逻辑，他们大部分逻辑相同，小部分逻辑不一致，此时可以创建抽象类，并定义相关方法，相同的逻辑只需定义一遍，不同的逻辑由各自的继承类去重写</p>
+<p>4）表达力：软件项目的主要成本在于长期维护。所以，代码应当清晰地表达作者的意图。</p>
+<p>5）尽可能少的类和方法：类和方法数量太多，有时是无意义的教条主义导致的。我们应该在保持函数和类短小的同时，保持整个系统短小精悍，类和方法的数量尽可能少。这条规则优先级最低，在保证以上规则的前提下保持尽可能少的类和方法</p>
+<h2 id="第十三章：并发编程"><a href="#第十三章：并发编程" class="headerlink" title="第十三章：并发编程"></a>第十三章：并发编程</h2><p>·并发防御原则</p>
+<p>1）单一权责原则（SRP）：单一权责原则认为，方法&#x2F;类&#x2F;组件应当只有一个修改的理由，并发设计本身足够复杂到成为修改的理由，所以应该从其他代码中分离出来</p>
+<p>2）限制数据作用域：两个线程修改共享对象的同一字段时，可能相互干扰，导致未预期的行为。解决方案之一是使用synchronized关键字在代码中保护一块使用共享对象的临界区</p>
+<p>3）使用数据副本：使用数据副本可以避免共享数据</p>
+<p>4）线程应尽可能独立：线程应该成为自己世界里的唯一线程，不与其他线程共享数据</p>
+<p>·了解执行模型</p>
+<p>1）生产者-消费者模型</p>
+<p>2）读者-作者模型</p>
+<p>3）宴席哲学家</p>
+<p>·警惕同步方法之间的依赖：避免使用一个共享对象的多个方法</p>
+<p>·保持同步区域微小：锁是昂贵的，它们带来了延迟和额外开销。应该尽可能减小同步区域</p>
+<p>·很难编写正确的关闭代码：尽早考虑关闭问题，尽早令其工作正常。平静关闭很难做到，并发编程中可能出现死锁，导致系统无法正常关闭</p>
+<p>·测试线程代码：对于多线程情况，测试较为困难，测试通过也无法保证并发过程完全没有问题。应该编写有潜力暴露问题的测试，在不同的编程配置、系统配置和负载条件下频繁运行</p>
+<p>1）将伪失败看作可能的线程问题：不要将系统错误归咎于偶发事件</p>
+<p>2）先使非线程代码可工作：不要同时追踪非线程缺陷和线程缺陷，确保代码在线程之外可工作</p>
+<p>3）编写可插拔的线程代码：编写可插拔的线程代码，可以在不同的配置环境下运行</p>
+<p>4）编写可调整的线程代码：要获得良好的线程平衡，常常需要试错。一开始，在不同的配置环境下监测系统性能，要允许线程数量可调整</p>
+<p>5）运行多于处理器数量的线程：任务交换越频繁，越有可能找到错过临界区或导致死锁的代码。</p>
+<p>6）在不同平台上运行：在不同环境中，多线程代码的行为也不一致，尽早并经常地在所有目标平台上运行线程代码</p>
+<p>7）装置试错代码：增加对Object.wait()、Object.sleep()、Object.yield()、Object.priority()等方法的调用，改变代码执行顺序，从而增加检测到缺陷的可能性</p>
+<p>8）硬编码：向代码中加入Object.wait()、Object.sleep()、Object.yield()、Object.priority()等方法的调用</p>
+<p>9）自动化：可以使用Aspect-Oriented Frameword、CGLIB、ASM之类的工具通过编程来装置代码</p>
+<h2 id="第十四章：逐步改进"><a href="#第十四章：逐步改进" class="headerlink" title="第十四章：逐步改进"></a>第十四章：逐步改进</h2><p>作者介绍了一个自己逐步改进、重构代码的例子</p>
+<h2 id="第十五章：JUnit内幕"><a href="#第十五章：JUnit内幕" class="headerlink" title="第十五章：JUnit内幕"></a>第十五章：JUnit内幕</h2><p>作者以Junit的源码为例，讲解了重构的一些思路</p>
+<h2 id="第十六章：重构SerialDate"><a href="#第十六章：重构SerialDate" class="headerlink" title="第十六章：重构SerialDate"></a>第十六章：重构SerialDate</h2><h2 id="第十七章：味道与启发"><a href="#第十七章：味道与启发" class="headerlink" title="第十七章：味道与启发"></a>第十七章：味道与启发</h2><p>·注释</p>
+<p>1）不恰当的信息：注释只应该描述有关代码和设计的技术性信息，如作者、最后修改时间等会被源代码控制系统记录</p>
+<p>2）废弃的注释：过时、无关、不正确的注释是废弃的注释，如果发现废弃注释，最好尽快更新或删除</p>
+<p>3）冗余注释：注释应该谈及代码自身没提到的信息</p>
+<p>4）糟糕的注释：如果要写注释，就要花时间保证写出最好的注释，别闲扯、画蛇添足，保持简洁</p>
+<p>5）注释掉的代码：你注释掉的代码，其他人没人敢删。随着时间推移，注释掉的代码逐渐腐烂，调用不复存在的函数，使用已改名的变量。注释掉的代码应该删除，源代码控制系统会记录它，不用担心丢失</p>
+<p>·环境</p>
+<p>1）需要多步才能实现的构建：构建系统应该是单步的小操作</p>
+<p>2）需要多步才能实现的测试：应当能够发出单个指令就可以运行全部单元测试</p>
+<p>·函数</p>
+<p>1）过多的参数：函数的参数应该尽可能少，没参数，一个，两个，三个，三个以上的参数非常值得质疑，应该坚决避免</p>
+<p>2）输出参数：输出参数违反直觉</p>
+<p>3）标识参数：布尔值参数表明函数做了不只一件事（true时do something，false时do something else），应该杜绝</p>
+<p>4）死函数：永不被调用的方法应该丢弃</p>
+<p>·一般性问题</p>
+<p>1）一个源文件中存在多种语言</p>
+<p>2）明显的行为未被实现：函数或类应该实现其他程序员有理由期待的行为</p>
+<p>3）不正确的边界行为：注意边界条件，编写测试</p>
+<p>4）忽视安全：忽视某些告警</p>
+<p>5）重复：重复代码，意味着遗漏了抽象。重复代码可以用单一方法来替代；在不同模块重复出现的，可以用多态代替；采用类似算法但具体代码行不同的模块，可以使用模板方法模式或者策略模式来替代</p>
+<p>6）在错误的抽象层级上的代码：创建抽象类来容纳较高层级概念，创建派生类来容纳较低层级概念。例如将某个函数放在很高的层级，但是有些派生类没有与该函数相关的概念，说明这个函数放在了过高的层级</p>
+<p>7）基类依赖于派生类：通常来说，基类对派生类应该一无所知</p>
+<p>8）信息过多：不要创建拥有大量方法或大量实体变量的类，不要为子类创建大量受保护变量和函数。。。</p>
+<p>9）死代码：如果你找到死代码，就体面地埋葬它，将它从系统中删除</p>
+<p>10）垂直分隔：变量和函数应该在靠近被使用的地方定义，本地变量应该在其首次被使用的位置上面声明，垂直距离要短。私有函数应该在其首次被使用的位置下面定义。</p>
+<p>11）前后不一致：举个例子，如果在特定函数中用response变量持有HttpServletResponse对象，则在其他用到HttpServletResponse对象的函数中也用同样的变量名</p>
+<p>12）混淆视听：没有用到的变量，从不调用的函数，没有信息量的注释，都应该清除</p>
+<p>13）人为耦合：不互相依赖的东西不该耦合。人为耦合是指两个没有直接目的之间的模块的耦合</p>
+<p>14）特性依恋：类的方法只应对其所属类中的变量和函数感兴趣，不该垂青其他类中的变量和函数</p>
+<p>15）选择算子参数：类似于布尔值参数。使用多个函数，优于向单个函数传递某些代码来选择函数行为</p>
+<p>16）晦涩的意图：代码要尽可能具有表达力，下面的写法就是一个反例</p>
+<p><img src="/../../../img/cleancode/image-20240110153218687.png" srcset="/img/loading.gif" lazyload></p>
+<p>17）位置错误的权责：在哪里放代码？需要好好决策</p>
+<p>18）不恰当的静态方法：如果的确需要静态函数，确保没机会打算让它有多态行为</p>
+<p>19）使用解释性变量：如果不用key和value，直接调用put函数的话，1和2的含义都是未知的</p>
+<p><img src="/../../../img/cleancode/image-20240110153819734.png" srcset="/img/loading.gif" lazyload></p>
+<p>20）函数名称应该表达其行为</p>
+<p>21）理解算法：搞懂自己的代码是如何工作的，而不是通过测试就了事</p>
+<p>22）把逻辑依赖改为物理依赖</p>
+<p>23）用多态替代if else或switch case</p>
+<p>24）遵循标准约定：每个团队都应遵循基于通用行业规范的一套编码标准</p>
+<p>25）用命名常量替代魔术数，例如用SECONDS_PER_DAY替代数字86400</p>
+<p>26）准确</p>
+<p>27）结构甚于约定：命名约定很好，但却次于强制性的结构</p>
+<p>28）封装条件：没有if或while语句的上下文，布尔逻辑难以理解，应该把解释了条件意图的函数抽离出来</p>
+<p><img src="/../../../img/cleancode/image-20240110161013869.png" srcset="/img/loading.gif" lazyload></p>
+<p>29）避免否定性条件：否定性比肯定性难以理解，尽可能将条件表示为肯定性</p>
+<p><img src="/../../../img/cleancode/image-20240110161110376.png" srcset="/img/loading.gif" lazyload></p>
+<p>30）函数只做一件事</p>
+<p>31）掩蔽时序耦合：有必要使用时序耦合，不应该掩盖它</p>
+<p>下面的代码没有强制这种时序耦合</p>
+<p><img src="/../../../img/cleancode/image-20240110162652925.png" srcset="/img/loading.gif" lazyload></p>
+<p>修改后如下，通过创建顺序队列暴露了时序耦合，保证按顺序调用三个函数</p>
+<p><img src="/../../../img/cleancode/image-20240110162730720.png" srcset="/img/loading.gif" lazyload></p>
+<p>32）封装边界条件：边界条件难以追踪，把处理边界条件的代码集中到一处，不要散落于代码中</p>
+<p><img src="/../../../img/cleancode/image-20240110163104176.png" srcset="/img/loading.gif" lazyload></p>
+<p>33）函数应该只在一个抽象层级上</p>
+<p>34）在较高层级放置可配置数据</p>
+<p>35）避免传递浏览：如果A与B协作，B与C协作，不应该让A的去了解C的信息，而是通过让直接协作者提供所需的全部服务。例如，A调用B，让B去提供操作C的方法，供A调用</p>
+<p>·Java</p>
+<p>1）通过使用通配符避免过长的导入清单：如果使用了来自同一程序包的两个或多个类，用以下语句导入整个包</p>
+<p>import package.*;</p>
+<p>2）不要继承常量：用静态导入常量所在的类，而不是通过继承该类而去使用常量</p>
+<p>3）常量和枚举：大胆用枚举，枚举比常量提供了更多表达力和灵活性的工具</p>
+<p>·名称</p>
+<p>1）采用描述性名称：花时间明智地取名</p>
+<p>2）名称应与抽象层级相符：取反映类或函数抽象层级的名称</p>
+<p>3）尽可能使用标准命名法：例如将对象转换为字符串的函数通常命名为toString；开发团队也有自己的命名标准系统</p>
+<p>4）无歧义的名称：选用不会混淆函数或变量意义的名称，例如doRename函数里还有个renamePage，这两个函数之间难以区分</p>
+<p>5）为较大作用范围选用较长名称：名称的作用范围越大，名称就该越长、越准确。在小范围中，如i、j这种命名也是合理的</p>
+<p>6）避免编码：不应在名称中包括类型或作用范围信息，无意义</p>
+<p>7）名称应该说明副作用：例如一个函数获取一个oos，如果oos不存在，则会创建。如果取名为getOos，则不能反映创建的过程，最好命名为createOrReturnOos</p>
+<p>·测试</p>
+<p>1）测试不足：一套测试应该测到所有可能失败的东西</p>
+<p>2）使用覆盖率工具：使用覆盖率工具汇报测试中的缺口</p>
+<p>3）别略过小测试：小测试易于编写，其文档上的价值高于编写成本</p>
+<p>4）被忽略的测试就是对不确定事物的疑问</p>
+<p>5）测试边界条件：边界条件不能遗漏</p>
+<p>6）全面测试相近的缺陷：如果在某个函数中发现一个缺陷，最好全面测试这个函数，缺陷可能不止一个</p>
+<p>7）测试应该快速</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/IT/" class="print-no-link">#IT</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>代码整洁之道</div>
+      <div>http://example.com/2024/01/11/代码整洁之道/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>lalaland</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年1月11日</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>更新于</div>
+          <div>2024年1月11日</div>
+        </div>
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2024/01/18/Docker%E6%8A%80%E6%9C%AF%E5%85%A5%E9%97%A8%E4%B8%8E%E5%AE%9E%E6%88%98/" title="Docker技术入门与实战">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Docker技术入门与实战</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/12/20/Leetcode%E5%B8%B8%E8%A7%81%E7%AE%97%E6%B3%95%E9%A2%98/" title="Leetcode常见算法题">
+                        <span class="hidden-mobile">Leetcode常见算法题</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  var relativeDate = function() {
+    var updatedTime = document.getElementById('updated-time');
+    if (updatedTime) {
+      var text = updatedTime.textContent;
+      var reg = /\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:Z|[+-]\d{2}:\d{2})/;
+      var matchs = text.match(reg);
+      if (matchs) {
+        var relativeTime = moment(matchs[0]).fromNow();
+        updatedTime.textContent = text.replace(reg, relativeTime);
+      }
+      updatedTime.style.display = '';
+    }
+  };
+  Fluid.utils.createScript('https://lib.baomitu.com/moment.js/2.29.4/moment.min.js', function() {
+    if (!'zh-cn'.startsWith('en')) {
+      Fluid.utils.createScript('https://lib.baomitu.com/moment.js/2.29.4/locale/zh-cn.min.js', function() {
+        relativeDate();
+      });
+    } else {
+      relativeDate();
+    }
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
