@@ -16,16 +16,16 @@
   <meta name="author" content="lalaland">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Docker通过容器技术帮助我们快速部署应用，减少环境配置的时间和风险。作为后端开发工程师，我们也需要对Docker有一定的了解，如下是我阅读了《Docker技术入门与实战》后摘录的一些重要内容。前几章主要介绍了Docker以及相应的Docker指令，后几章介绍了通过Docker进行高级操作，如部署Web应用、部署数据库等，不做详细记录，如有需要可以通过大纲定位进一步翻阅书籍。 第一章：初始Doc">
+    <meta name="description" content="前言Docker通过容器技术帮助我们快速部署应用，减少环境配置的时间和风险。作为后端开发工程师，我们也需要对Docker有一定的了解，如下是我阅读了《Docker技术入门与实战》后摘录的一些重要内容。前几章主要介绍了Docker以及相应的Docker指令，后几章介绍了通过Docker进行高级操作，如部署Web应用、部署数据库等，不做详细记录，如有需要可以通过大纲定位进一步翻阅书籍。 第一章：初始D">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Docker技术入门与实战">
 <meta property="og:url" content="http://example.com/2024/01/18/Docker%E6%8A%80%E6%9C%AF%E5%85%A5%E9%97%A8%E4%B8%8E%E5%AE%9E%E6%88%98/index.html">
 <meta property="og:site_name" content="lalaland">
-<meta property="og:description" content="Docker通过容器技术帮助我们快速部署应用，减少环境配置的时间和风险。作为后端开发工程师，我们也需要对Docker有一定的了解，如下是我阅读了《Docker技术入门与实战》后摘录的一些重要内容。前几章主要介绍了Docker以及相应的Docker指令，后几章介绍了通过Docker进行高级操作，如部署Web应用、部署数据库等，不做详细记录，如有需要可以通过大纲定位进一步翻阅书籍。 第一章：初始Doc">
+<meta property="og:description" content="前言Docker通过容器技术帮助我们快速部署应用，减少环境配置的时间和风险。作为后端开发工程师，我们也需要对Docker有一定的了解，如下是我阅读了《Docker技术入门与实战》后摘录的一些重要内容。前几章主要介绍了Docker以及相应的Docker指令，后几章介绍了通过Docker进行高级操作，如部署Web应用、部署数据库等，不做详细记录，如有需要可以通过大纲定位进一步翻阅书籍。 第一章：初始D">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/docker/cover.png">
 <meta property="article:published_time" content="2024-01-18T02:15:21.000Z">
-<meta property="article:modified_time" content="2024-01-22T01:56:41.427Z">
+<meta property="article:modified_time" content="2024-01-22T02:21:57.077Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="后端开发">
 <meta property="article:tag" content="读书笔记">
@@ -305,7 +305,7 @@
               <p id="updated-time" class="note note-info" style="display: none">
                 
                   
-                    本文最后更新于 2024-01-22T09:56:41+08:00
+                    本文最后更新于 2024-01-22T10:21:57+08:00
                   
                   
 
@@ -315,7 +315,7 @@
             
               <div class="markdown-body">
                 
-                <p>Docker通过容器技术帮助我们快速部署应用，减少环境配置的时间和风险。作为后端开发工程师，我们也需要对Docker有一定的了解，如下是我阅读了《Docker技术入门与实战》后摘录的一些重要内容。前几章主要介绍了Docker以及相应的Docker指令，后几章介绍了通过Docker进行高级操作，如部署Web应用、部署数据库等，不做详细记录，如有需要可以通过大纲定位进一步翻阅书籍。</p>
+                <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>Docker通过容器技术帮助我们快速部署应用，减少环境配置的时间和风险。作为后端开发工程师，我们也需要对Docker有一定的了解，如下是我阅读了《Docker技术入门与实战》后摘录的一些重要内容。前几章主要介绍了Docker以及相应的Docker指令，后几章介绍了通过Docker进行高级操作，如部署Web应用、部署数据库等，不做详细记录，如有需要可以通过大纲定位进一步翻阅书籍。</p>
 <h2 id="第一章：初始Docker与容器"><a href="#第一章：初始Docker与容器" class="headerlink" title="第一章：初始Docker与容器"></a>第一章：初始Docker与容器</h2><p>·如果说主机时代比拼的是单个服务器物理性能（如CPU 主频和内存）的强弱，那么在云时代，最为看重的则是凭借虚拟化技术所构建的集群处理能力。</p>
 <p>·传统来看，虚拟化既可以通过硬件模拟来实现，也可以通过操作系统软件来实现。而容器技术则更为优雅，它充分利用了操作系统本已有的机制和特性，可以实现远超传统虚拟机的轻量级虚拟化。</p>
 <p>·Docker 是基于Go 语言实现的开源容器项目，Docker 的构想是要实现“Build, Ship and Run Any App, Anywhere” ，即通过对应用的封装(Packaging)、分发(Distribution)、部署(Deployment)、运行(Runtime) 生命周期进行管理，达到应用组件级别的“一次封装，到处运行”。这里的应用组件，既可以是一个Web 应用、一个编译环境，也可以是一套数据库平台服务，甚至是一个操作系统或集群。</p>
