@@ -16,19 +16,18 @@
   <meta name="author" content="lalaland">
   <meta name="keywords" content="">
   
-    <meta name="description" content="LeetCode Hot1001. 两数之和 利用哈希表O(1)的查找时间复杂度，将原本的两次循环转换为一次循环，实现O(n)的时间复杂度。 map.containsKey() 12345678910111213class Solution &#123;    public int[] twoSum(int[] nums, int target) &#123;        Map&lt;Inte">
+    <meta name="description" content="算法题是校招和社招中必要的面试环节，面试中的高频题主要来自LeetCode Hot100和剑指Offer。在准备暑期实习和秋招的过程中，我记录了其中的大部分题目、解题思路、需要注意的边界情况和代码。统一记录的好处是，后续准备的时候效率更高，对于某些简单的题目可以快速回顾其解题思路，而不必再次花时间写代码。准备面试前可以快速回顾一遍这些题目的思路，之后面试心里就有底了。希望对大家有帮助~ LeetC">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Leetcode常见算法题">
 <meta property="og:url" content="http://example.com/2023/12/20/Leetcode%E5%B8%B8%E8%A7%81%E7%AE%97%E6%B3%95%E9%A2%98/index.html">
 <meta property="og:site_name" content="lalaland">
-<meta property="og:description" content="LeetCode Hot1001. 两数之和 利用哈希表O(1)的查找时间复杂度，将原本的两次循环转换为一次循环，实现O(n)的时间复杂度。 map.containsKey() 12345678910111213class Solution &#123;    public int[] twoSum(int[] nums, int target) &#123;        Map&lt;Inte">
+<meta property="og:description" content="算法题是校招和社招中必要的面试环节，面试中的高频题主要来自LeetCode Hot100和剑指Offer。在准备暑期实习和秋招的过程中，我记录了其中的大部分题目、解题思路、需要注意的边界情况和代码。统一记录的好处是，后续准备的时候效率更高，对于某些简单的题目可以快速回顾其解题思路，而不必再次花时间写代码。准备面试前可以快速回顾一遍这些题目的思路，之后面试心里就有底了。希望对大家有帮助~ LeetC">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/leetcode/cover.png">
 <meta property="article:published_time" content="2023-12-20T05:18:10.000Z">
-<meta property="article:modified_time" content="2023-12-20T06:05:29.640Z">
+<meta property="article:modified_time" content="2024-01-22T02:05:01.962Z">
 <meta property="article:author" content="John Doe">
-<meta property="article:tag" content="IT">
-<meta property="article:tag" content="面试">
+<meta property="article:tag" content="后端开发">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://example.com/img/leetcode/cover.png">
   
@@ -240,7 +239,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          23k 字
+          24k 字
         
       </span>
     
@@ -251,7 +250,7 @@
         
         
         
-          196 分钟
+          197 分钟
         
       </span>
     
@@ -305,7 +304,7 @@
               <p id="updated-time" class="note note-info" style="display: none">
                 
                   
-                    本文最后更新于 2023-12-20T14:05:29+08:00
+                    本文最后更新于 2024-01-22T10:05:01+08:00
                   
                   
 
@@ -315,7 +314,8 @@
             
               <div class="markdown-body">
                 
-                <h1 id="LeetCode-Hot100"><a href="#LeetCode-Hot100" class="headerlink" title="LeetCode Hot100"></a>LeetCode Hot100</h1><h2 id="1-两数之和"><a href="#1-两数之和" class="headerlink" title="1. 两数之和"></a>1. 两数之和</h2><p><img src="/img/leetcode/1677160961940-e4c8dc6f-b449-491f-a01f-0183fb1b43f7.png" srcset="/img/loading.gif" lazyload></p>
+                <p>算法题是校招和社招中必要的面试环节，面试中的高频题主要来自LeetCode Hot100和剑指Offer。在准备暑期实习和秋招的过程中，我记录了其中的大部分题目、解题思路、需要注意的边界情况和代码。统一记录的好处是，后续准备的时候效率更高，对于某些简单的题目可以快速回顾其解题思路，而不必再次花时间写代码。准备面试前可以快速回顾一遍这些题目的思路，之后面试心里就有底了。希望对大家有帮助~</p>
+<h1 id="LeetCode-Hot100"><a href="#LeetCode-Hot100" class="headerlink" title="LeetCode Hot100"></a>LeetCode Hot100</h1><h2 id="1-两数之和"><a href="#1-两数之和" class="headerlink" title="1. 两数之和"></a>1. 两数之和</h2><p><img src="/img/leetcode/1677160961940-e4c8dc6f-b449-491f-a01f-0183fb1b43f7.png" srcset="/img/loading.gif" lazyload></p>
 <p>利用哈希表O(1)的查找时间复杂度，将原本的两次循环转换为一次循环，实现O(n)的时间复杂度。</p>
 <p>map.containsKey()</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs plain">class Solution &#123;<br>    public int[] twoSum(int[] nums, int target) &#123;<br>        Map&lt;Integer, Integer&gt; map = new HashMap&lt;&gt;();<br>        for(int i = 0; i &lt; nums.length; ++i) &#123;<br>            if(map.containsKey(target - nums[i])) &#123;<br>                return new int[]&#123;i, map.get(target - nums[i])&#125;;<br>            &#125; else &#123;<br>                map.put(nums[i], i);<br>            &#125;<br>        &#125;<br>        return null;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
@@ -1036,9 +1036,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/IT/" class="print-no-link">#IT</a>
-      
-        <a href="/tags/%E9%9D%A2%E8%AF%95/" class="print-no-link">#面试</a>
+        <a href="/tags/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/" class="print-no-link">#后端开发</a>
       
     </div>
   
@@ -1069,7 +1067,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2023年12月20日</div>
+          <div>2024年1月22日</div>
         </div>
       
       
