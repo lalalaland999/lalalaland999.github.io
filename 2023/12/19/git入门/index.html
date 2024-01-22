@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/git/cover.png">
 <meta property="article:published_time" content="2023-12-19T13:23:24.000Z">
-<meta property="article:modified_time" content="2024-01-22T01:50:08.370Z">
+<meta property="article:modified_time" content="2024-01-22T02:43:08.361Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="后端开发">
 <meta name="twitter:card" content="summary_large_image">
@@ -304,7 +304,7 @@
               <p id="updated-time" class="note note-info" style="display: none">
                 
                   
-                    本文最后更新于 2024-01-22T09:50:08+08:00
+                    本文最后更新于 2024-01-22T10:43:08+08:00
                   
                   
 
@@ -328,7 +328,7 @@
 <p>git add .   将当前文件夹下所有文件添加到暂存区</p>
 <p>git log   查看提交记录</p>
 <p>git log –oneline   简洁版查看提交记录</p>
-<p><img src="/%5Cimg%5Cgit%5C1.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/img/git/1.png" srcset="/img/loading.gif" lazyload></p>
 <h4 id="git-reset回退版本"><a href="#git-reset回退版本" class="headerlink" title="git reset回退版本"></a>git reset回退版本</h4><p>git reset –soft   回退到某一版本，工作区和暂存区保存</p>
 <p>git reset –hard   回退到某一版本，工作区和暂存区都不保存</p>
 <p>git reset –mixed   回退到某一版本，工作区保存，暂存区不保存</p>
@@ -355,10 +355,10 @@
 <p>git diff HEAD^ HEAD   比较当前版本和上一个版本的差异</p>
 <p>git diff HEAD~2 HEAD   比较当前版本和HEAD之前两个版本的差异</p>
 <p>git diff HEAD~2 HEAD test.txt   比较该文件的差异内容</p>
-<p><img src="/%5Cimg%5Cgit%5C2.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/img/git/2.png" srcset="/img/loading.gif" lazyload></p>
 <h4 id="git-rm删除文件"><a href="#git-rm删除文件" class="headerlink" title="git rm删除文件"></a>git rm删除文件</h4><p>rm test.txt   删除工作区文件</p>
 <p>git rm test.txt   工作区和暂存区中的文件都会被删除</p>
-<p><img src="/%5Cimg%5Cgit%5C3.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/img/git/3.png" srcset="/img/loading.gif" lazyload></p>
 <h4 id="gitignore忽略文件"><a href="#gitignore忽略文件" class="headerlink" title=".gitignore忽略文件"></a>.gitignore忽略文件</h4><p>系统或者软件自动生成的文件</p>
 <p>编译产生的中间文件和结果文件</p>
 <p>运行时生成的日志文件、缓存文件、临时文件</p>
@@ -367,12 +367,13 @@
 <p>echo *.log &gt;&gt; .gitignore   忽略所有log文件</p>
 <p>如果有相应的文件在修改.gitignore文件前已经添加到了版本库，后续git会继续追踪该文件的状态</p>
 <p>echo temp&#x2F; &gt;&gt; .gitignore   忽略temp文件夹下的文件</p>
-<h4 id=""><a href="#" class="headerlink" title=""></a><img src="/%5Cimg%5Cgit%5C4.png" srcset="/img/loading.gif" lazyload></h4><h4 id="关联本地仓库和远程仓库"><a href="#关联本地仓库和远程仓库" class="headerlink" title="关联本地仓库和远程仓库"></a>关联本地仓库和远程仓库</h4><p>git remote add origin xxxxxx.git   添加远程仓库</p>
+<p><img src="/img/git/4.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id=""><a href="#" class="headerlink" title=""></a></h4><h4 id="关联本地仓库和远程仓库"><a href="#关联本地仓库和远程仓库" class="headerlink" title="关联本地仓库和远程仓库"></a>关联本地仓库和远程仓库</h4><p>git remote add origin xxxxxx.git   添加远程仓库</p>
 <p>git remote -v   查看远程仓库信息</p>
 <p>git push -u origin main   将本地main分支与远程分支关联</p>
 <p>git pull &lt;远程仓库名&gt; &lt;远程分支名&gt;:&lt;本地分支名&gt;   </p>
 <p>git pull   默认将远程仓库中的main分支拉取到本地进行合并</p>
-<p><img src="/%5Cimg%5Cgit%5C5.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/img/git/5.png" srcset="/img/loading.gif" lazyload></p>
 <h4 id="GUI工具"><a href="#GUI工具" class="headerlink" title="GUI工具"></a>GUI工具</h4><p>Github Desktop  </p>
 <p>SourceTree</p>
 <p>GitKraken</p>
@@ -385,7 +386,7 @@
 <p>git log – graph –oneline –decorate –all   展示分支合并过程</p>
 <p>git branch -d dev   删除dev分支，合并后使用</p>
 <p>git branch -D dev   强制删除dev分支</p>
-<p><img src="/%5Cimg%5Cgit%5C6.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/img/git/6.png" srcset="/img/loading.gif" lazyload></p>
 <h4 id="解决合并冲突"><a href="#解决合并冲突" class="headerlink" title="解决合并冲突"></a>解决合并冲突</h4><p>git status   可以查看冲突文件</p>
 <p>git diff   可以查看冲突具体内容</p>
 <p>手动修改这个冲突文件之后再合并即可</p>
@@ -398,8 +399,8 @@
 <p>rebase</p>
 <p>优点：不会新增额外的提交记录，形成线性历史，比较直观干净</p>
 <p>缺点：会改变提交历史，改变当前分支branch out的节点，避免在共享分支使用</p>
-<h4 id="分支管理和工作流模型"><a href="#分支管理和工作流模型" class="headerlink" title="分支管理和工作流模型"></a>分支管理和工作流模型</h4><p><img src="/%5Cimg%5Cgit%5C7.png" srcset="/img/loading.gif" lazyload></p>
-<p><img src="/%5Cimg%5Cgit%5C8.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="分支管理和工作流模型"><a href="#分支管理和工作流模型" class="headerlink" title="分支管理和工作流模型"></a>分支管理和工作流模型</h4><p><img src="/img/git/7.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/img/git/8.png" srcset="/img/loading.gif" lazyload></p>
 
                 
               </div>
